@@ -82,13 +82,13 @@ exports.sendOTP = catchAsync(async (req, res, next) => {
   console.log(new_otp);
 
   // TODO send mail
-  mailService.sendEmail({
-    from: "shreyanshshah242@gmail.com",
-    to: user.email,
-    subject: "Verification OTP",
-    html: otp(user.firstName, new_otp),
-    attachments: [],
-  });
+  // mailService.sendEmail({
+  //   from: "bestworkerrzz@gmail.com",
+  //   to: user.email,
+  //   subject: "Verification OTP",
+  //   html: otp(user.firstName, new_otp),
+  //   attachments: [],
+  // });
 
   res.status(200).json({
     status: "success",
@@ -246,13 +246,13 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
 
   // 3) Send it to user's email
   try {
-    const resetURL = `http://localhost:3000/auth/new-password?token=${resetToken}`;
+    const resetURL = `http://localhost:5000/auth/new-password?token=${resetToken}`;
     // TODO => Send Email with this Reset URL to user's email address
 
     console.log(resetURL);
 
     mailService.sendEmail({
-      from: "shreyanshshah242@gmail.com",
+      from: "bestworkerrzz@gmail.com",
       to: user.email,
       subject: "Reset Password",
       html: resetPassword(user.firstName, resetURL),
